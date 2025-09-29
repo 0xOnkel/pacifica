@@ -2,6 +2,12 @@
 name = "pacifica"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
+description = "Rust SDK for pacifica.fi 🦀"
+readme = "README.md"
+homepage = "https://github.com/0xOnkel/pacifica"
+repository = "https://github.com/0xOnkel/pacifica"
+keywords = ["solana", "pacifica.fi", "sdk"]
 
 [dependencies]
 base58 = "0.2.0"
