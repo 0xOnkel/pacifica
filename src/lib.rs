@@ -5,13 +5,23 @@ use std::{
 
 use base58::FromBase58;
 use ed25519_dalek::SigningKey;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 mod api;
 mod json;
+mod market;
 
 pub const API_BASE: &str = "https://api.pacifica.fi/api/v1";
+pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + Sync>>;
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct ApiResponse<T> {
+    pub success: bool,
+    pub data: T,
+    pub error: Option<String>,
+    pub code: Option<String>,
+}
 
 pub fn timestamp_ms() -> u128 {
     SystemTime::now()
@@ -77,6 +87,7 @@ impl From<Operation> for String {
 
 pub struct Client {
     account: String,
+    client: reqwest::Client,
     signing_key: SigningKey,
 }
 
@@ -107,6 +118,7 @@ impl ClientBuilder {
     pub fn build(self) -> Client {
         Client {
             account: self.account,
+            client: reqwest::Client::new(),
             signing_key: self.signing_key,
         }
     }
