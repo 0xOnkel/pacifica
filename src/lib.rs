@@ -12,6 +12,7 @@ mod api;
 mod json;
 pub mod kline;
 mod market;
+mod orderbook;
 
 pub const API_BASE: &str = "https://api.pacifica.fi/api/v1";
 pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + Sync>>;
