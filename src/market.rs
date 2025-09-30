@@ -46,6 +46,8 @@ pub struct Price {
 }
 
 impl Client {
+    // This endpoint allows users to get exchange information,
+    // including market specifications for all available trading pairs.
     pub async fn get_market_info(&self) -> Result<ApiResponse<Vec<Market>>> {
         Ok(self
             .client
@@ -56,6 +58,8 @@ impl Client {
             .await?)
     }
 
+    // This endpoint allows users to get price information for all symbols,
+    // including mark prices, funding rates, and market statistics.
     pub async fn get_prices(&self) -> Result<ApiResponse<Vec<Price>>> {
         Ok(self
             .client
