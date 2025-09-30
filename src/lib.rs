@@ -10,6 +10,7 @@ use serde_json::Value;
 
 mod api;
 mod json;
+pub mod kline;
 mod market;
 
 pub const API_BASE: &str = "https://api.pacifica.fi/api/v1";
