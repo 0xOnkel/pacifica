@@ -110,7 +110,7 @@ impl Client {
     ) -> Result<ApiResponse<Vec<Kline>>> {
         let mut url = Url::parse(&format!("{API_BASE}/{GET_KLINE_DATA}"))?;
         url.query_pairs_mut()
-            .append_pair("symbol", &symbol)
+            .append_pair("symbol", symbol)
             .append_pair("interval", &interval.to_string())
             .append_pair("start_time", &start_time.to_string());
         if let Some(end_time) = end_time {

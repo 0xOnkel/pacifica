@@ -65,7 +65,7 @@ fn merge<T: Serialize, U: Serialize>(a: &T, b: &U) -> serde_json::Value {
 }
 
 impl Client {
-    pub fn get_request_header<'a, T>(&'a mut self, operation: Operation, data: T) -> Value
+    pub fn get_request_header<T>(&mut self, operation: Operation, data: T) -> Value
     where
         T: Serialize + Clone,
     {

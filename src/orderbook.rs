@@ -51,7 +51,7 @@ pub struct OrderBookLevel {
 impl Client {
     pub async fn get_orderbook(&self, symbol: &str) -> Result<ApiResponse<OrderBook>> {
         let mut url = Url::parse(&format!("{API_BASE}/{GET_ORDERBOOK}"))?;
-        url.query_pairs_mut().append_pair("symbol", &symbol);
+        url.query_pairs_mut().append_pair("symbol", symbol);
 
         Ok(self.client.get(url).send().await?.json().await?)
     }
