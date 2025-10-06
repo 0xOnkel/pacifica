@@ -10,9 +10,13 @@ pub mod kline;
 mod market;
 pub mod order;
 mod orderbook;
+pub mod price;
 mod signature;
+pub mod ws;
 
 pub const API_BASE: &str = "https://api.pacifica.fi/api/v1";
+pub const WS_BASE: &str = "wss://ws.pacifica.fi/ws";
+
 pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + Sync>>;
 
 #[derive(Debug, Clone, Deserialize)]
